@@ -3,15 +3,14 @@ const nextConfig = {
     reactStrictMode: true,
   }
   
-  module.exports = {
-    async headers() {
-      return [
-        {
-          source: "/_next/:path*",
-          headers: [
-            { key: "Access-Control-Allow-Origin", value: "https://next-netlify-app.flywheelsites.com/graphql" },
-          ],
-        },
-      ]
-    },
-  }
+ 
+    module.exports = {
+        async rewrites() {
+            return [
+              {
+                source: '/api/:path*',
+                destination: 'https://api.example.com/:path*',
+              },
+            ]
+          },
+      };
